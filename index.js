@@ -13,20 +13,18 @@ const pagination = document.querySelector('[data-js="pagination"]');
 // States
 let maxPage = 1;
 let page = 1;
-const searchQuery = "";
+let searchQuery = "";
 
 async function fetchCharacters() {
   try {
     const response = await fetch(
-      `https://rickandmortyapi.com/api/character?page=${page}`
+      `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`
     );
     if (response.ok) {
       const data = await response.json();
       cardContainer.innerHTML = "";
       maxPage = data.info.pages;
       pagination.textContent = page + " / " + maxPage;
-      console.log(data);
-      console.log(maxPage);
       data.results.forEach((character) => {
         createCharacterCard(
           character.image,
@@ -49,7 +47,6 @@ async function fetchCharacters() {
 fetchCharacters();
 
 nextButton.addEventListener("click", () => {
-  console.log("next Button was clicked");
   if (page < maxPage) {
     page++;
     fetchCharacters();
@@ -61,7 +58,6 @@ nextButton.addEventListener("click", () => {
 });
 
 prevButton.addEventListener("click", () => {
-  console.log("prev Button was clicked");
   if (page > 1) {
     page--;
     fetchCharacters();
@@ -70,4 +66,13 @@ prevButton.addEventListener("click", () => {
       "This is not your elementary school math class. There are no negative numbers. Try something else, stupid."
     );
   }
+});
+
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+  searchQuery = data.query;
+  fetchCharacters();
+  event.target.reset();
 });
