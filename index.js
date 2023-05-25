@@ -1,9 +1,7 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { createSearchBar } from "./components/search-bar/search-bar.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
@@ -14,6 +12,8 @@ const pagination = document.querySelector('[data-js="pagination"]');
 let maxPage = 1;
 let page = 1;
 let searchQuery = "";
+
+createSearchBar();
 
 async function fetchCharacters() {
   try {
@@ -68,11 +68,11 @@ prevButton.addEventListener("click", () => {
   }
 });
 
-searchBar.addEventListener("submit", (event) => {
+/* searchBar.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData);
   searchQuery = data.query;
   fetchCharacters();
   event.target.reset();
-});
+}); */
