@@ -24,6 +24,7 @@ async function fetchCharacters() {
       const data = await response.json();
       cardContainer.innerHTML = "";
       maxPage = data.info.pages;
+      pagination.textContent = page + " / " + maxPage;
       console.log(data);
       console.log(maxPage);
       data.results.forEach((character) => {
