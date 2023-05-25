@@ -17,9 +17,12 @@ const searchQuery = "";
 
 async function fetchCharacters() {
   try {
-    const response = await fetch("https://rickandmortyapi.com/api/character");
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character?page=${page}`
+    );
     if (response.ok) {
       const data = await response.json();
+      cardContainer.innerHTML = "";
       console.log(data);
       data.results.forEach((character) => {
         createCharacterCard(
