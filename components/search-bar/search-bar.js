@@ -6,6 +6,7 @@ export function createSearchBar() {
   searchBar.classList.add("search-bar");
   searchBar.setAttribute("data-js", "search-bar");
   searchBar.setAttribute("action", "");
+  searchBar.setAttribute("onsubmit", "console.log(`search bar submitted`)");
   searchBar.innerHTML = `<input
   name="query"
   class="search-bar__input"
