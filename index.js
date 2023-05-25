@@ -53,6 +53,10 @@ nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
     fetchCharacters();
+  } else {
+    alert(
+      "There are no more discovered characters (yet). If you want to see more go and annoy the adult swim people to make more seasons. That's not my friggin' job."
+    );
   }
 });
 
@@ -61,5 +65,9 @@ prevButton.addEventListener("click", () => {
   if (page > 1) {
     page--;
     fetchCharacters();
+  } else {
+    alert(
+      "This is not your elementary school math class. There are no negative numbers. Try something else, stupid."
+    );
   }
 });
