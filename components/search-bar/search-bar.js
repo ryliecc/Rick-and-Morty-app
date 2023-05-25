@@ -33,6 +33,5 @@ export function createSearchBar() {
     searchQuery = data.query;
     fetchCharacters();
     event.target.reset();
-    return searchQuery;
   });
 }
