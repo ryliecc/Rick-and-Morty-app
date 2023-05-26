@@ -1,5 +1,7 @@
 import { fetchCharacters } from "../../index.js";
 
+const page = 1;
+
 export function createSearchBar() {
   let searchQuery = "";
   const searchBarContainer = document.querySelector(
@@ -9,7 +11,6 @@ export function createSearchBar() {
   searchBar.classList.add("search-bar");
   searchBar.setAttribute("data-js", "search-bar");
   searchBar.setAttribute("action", "");
-  /* searchBar.setAttribute("onsubmit", "console.log(`searchbar was submitted`)"); */
   searchBar.innerHTML = `<input
   name="query"
   class="search-bar__input"
@@ -31,7 +32,7 @@ export function createSearchBar() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     searchQuery = data.query;
-    fetchCharacters(searchQuery);
+    fetchCharacters(page, searchQuery);
     event.target.reset();
   });
 }
