@@ -2,7 +2,7 @@ import { fetchCharacters } from "../../index.js";
 
 const page = 1;
 
-export function createSearchBar() {
+export default function createSearchBar() {
   let searchQuery = "";
   const searchBarContainer = document.querySelector(
     '[data-js="search-bar-container"]'
