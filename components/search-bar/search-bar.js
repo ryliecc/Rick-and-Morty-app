@@ -31,7 +31,7 @@ export function createSearchBar() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     searchQuery = data.query;
-    fetchCharacters();
+    fetchCharacters(searchQuery);
     event.target.reset();
   });
 }

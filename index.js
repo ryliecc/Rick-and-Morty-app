@@ -14,10 +14,10 @@ let searchQuery = "";
 
 createSearchBar();
 
-export async function fetchCharacters() {
+export async function fetchCharacters(searchQueryText) {
   try {
     const response = await fetch(
-      `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`
+      `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQueryText}`
     );
     if (response.ok) {
       const data = await response.json();
@@ -44,7 +44,7 @@ export async function fetchCharacters() {
   }
 }
 
-fetchCharacters();
+fetchCharacters(searchQuery);
 
 nextButton.addEventListener("click", () => {
   if (page < maxPage) {
